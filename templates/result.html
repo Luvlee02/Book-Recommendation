@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+         body{
+            padding:0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(186, 222, 254);
+        }
+        h1{
+            color: blue;
+            font-weight: 100px;
+        }
+        p{
+            text-align: center;
+            align-items: center;
+            border: 3px solid blue;
+            padding: 5px;
+            width:200px;
+            color: black;
+            background-color: white;
+            margin-bottom: 50px;
+        }
+        img{
+            align-items: center;
+            border: 3px solid blue;
+            border-bottom: 0;
+            padding: 0;
+        }
+    </style>
+    
+
+    </style>
+
+    <div class="container mt-5 mx-auto">
+        <h1 class="text-center mb-4">Online Library</h1>
+        <form action="/search" method="post">
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <select class="form-select" name="Type" style="margin-left:20%; margin: 10px">
+                            <option value="">Type</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <select class="form-select" name="Genre" style="margin-left:10%; margin: 10px">
+                            <option value="">Genre</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Thriller">Thriller</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3"> 
+                    <button type="submit" class="btn btn-primary" style="margin-left:10%; margin: 10px; width: 100px;">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        
+    <div class="container mt-5">
+        <div class="row p-5">
+            <div class="col-md-6">
+                <div class="row">
+                    {% for index, row in books.iterrows() %}
+                    <div class="col-md-3 mb-4" style="margin-left: 100px;">
+                        <div class="d-flex flex-column align-items-center">
+                            <img style="height:200px; width:200px" src="{{ row['Image'] }}" alt="{{ row['Title'] }}">
+                            <p>{{ row['Title'] }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>
